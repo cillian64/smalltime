@@ -1,4 +1,4 @@
-update=19/07/2017 23:11:29
+update=22/07/2017 16:57:44
 version=1
 last_client=kicad
 [pcbnew]
@@ -62,3 +62,11 @@ LibName30=valves
 LibName31=agg-kicad/lib/ic/microcontroller/stm32f0xxkxtx
 LibName32=agg-kicad/lib/connector/swd
 LibName33=agg-kicad/lib/connector/microusb
+LibName34=agg-kicad/lib/ic/clock/ds3231mz
+LibName35=agg-kicad/lib/ic/power/mcp1700
+LibName36=parts/com-09481
+LibName37=C:/Users/dave2/home/git/agg-kicad/lib/passive/si5515cdc
+LibName38=agg-kicad/lib/passive/pfet
+LibName39=parts/tept
+LibName40=agg-kicad/lib/misc/part
+LibName41=agg-kicad/lib/ui/switch

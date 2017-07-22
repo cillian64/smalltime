@@ -1,0 +1,8 @@
+USB allows 100mA without enumerating.
+
+Only significant thing on 3v3 is the STM32F0 which pulls 22mA at full whack, or
+under 5mA if clocked at 8MHz from LSI without PLL.
+
+Displays will be run off the 5V rail with MOSFETs on the common anodes feeding
+5V.  Cathodes will run to GPIOs which can sink up to 25mA each, or 80mA total.
+So each segment can be set for 10mA consumption.

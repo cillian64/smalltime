@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name agg)(type KiCad)(uri "$(KIPRJMOD)/agg-kicad/agg.pretty")(options "")(descr ""))
+  (lib (name smalltime)(type KiCad)(uri "$(KIPRJMOD)/smalltime.pretty")(options "")(descr ""))
+)
