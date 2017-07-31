@@ -1,12 +1,5 @@
 I2C locations:
-I2C1 pin PF0-1
 I2C1 pin PB6-7
-I2C2 pin PA11-12
-
-FT/FTf GPIOs (require 9):
-2: PF0-1
-6: PA8-12, PA15
-5: PB3-7
 
 Analog inputs:
 PA0-7
