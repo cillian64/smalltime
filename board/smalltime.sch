@@ -34,7 +34,6 @@ LIBS:swd
 LIBS:microusb
 LIBS:ds3231mz
 LIBS:mcp1700
-LIBS:si5515cdc
 LIBS:pfet
 LIBS:tept
 LIBS:part
@@ -589,9 +588,9 @@ Text Label 2900 3750 0    60   ~ 0
 DIG1
 Text Label 2900 2250 0    60   ~ 0
 DIG2
-Text Label 2100 3150 2    60   ~ 0
-DIG3
 Text Label 2100 3250 2    60   ~ 0
+DIG3
+Text Label 2100 3150 2    60   ~ 0
 DIG4
 Text Label 2900 2750 0    60   ~ 0
 DIG5
