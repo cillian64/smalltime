@@ -1,0 +1,83 @@
+Bill Of Materials
+=================
+
+Source file: smalltime.xml
+Date: 2017-08-02T22:56:40.273033
+
+Parts Missing Footprints
+------------------------
+X1     BATTERY        
+
+Parts Missing Order Codes
+-------------------------
+P2     SWD_TC          agg:TC2030-NL
+TP1    SDA             smalltime:testpoint
+TP2    SCL             smalltime:testpoint
+TP3    GND             smalltime:testpoint
+
+Inconsistent Order Codes
+------------------------
+  Farnell
+  ~~~~~~~
+    2627651: 
+      U1     DIG1            smalltime:LS0803GWK
+      U2     DIG2            smalltime:LS0803GWK
+      U3     DIG3            smalltime:LS0803GWK
+      U4     DIG4            smalltime:LS0803GWK
+      U5     DIG5            smalltime:LS0803GWK
+      U6     DIG6            smalltime:LS0803GWK
+      U7     DIG7            smalltime:LS0803GWK
+      U8     DIG8            smalltime:LS0803GWK
+    2056829: 
+      SW1    INC             smalltime:SKHHLSA010
+      SW2    SET             smalltime:SKHHLSA010
+
+Vendor Specific BOMs
+--------------------
+  Toby
+  ~~~~
+FTSH-105-01-F-D-K,1,1x P1 FTSH-105-01-F-D-K
+
+
+  Farnell
+  ~~~~~~~
+4199091,1,1x BATTERY None
+2432085,1,1x STM32F030K6T6 LQFP-32
+2627651,8,8x DIG8 DIG4 DIG5 DIG6 DIG7 DI
+1651284,1,1x ADP3338 SOT223
+1426253,8,8x Q_NMOS_GSD SOT-23
+2447260,8,8x 160 0603
+2447226,1,1x 100k 0603
+2515358,1,1x DS3231MZ SOIC-8
+2627427,3,3x 100n 0603
+1568023,1,1x MICROUSB MICROUSB_MOLEX_475
+2447272,2,2x 1k 0603
+SC12389,1,1x TEPT4400 LED_D3.0mm
+2320811,1,1x 4u7 0603
+1759102,1,1x 10n 0603
+1759399,3,3x 1u 0603
+2056829,2,2x SET INC SKHHLSA010
+3029839,1,1x CR1220/1225 KEYSTONE500
+
+
+Assembly BOM
+------------
+FTSH-105-01-F-D-K    1   SWD             FTSH-105-01-F-D-K P1
+4199091              1   BATTERY         None            X1
+2432085              1   STM32F030K6T6   LQFP-32         IC1
+2627651              8   DIG8,DIG4,DIG5,DIG6,DIG7,DIG1,DIG2,DIG3 LS0803GWK       U1 U2 U3 U4 U5 U6 U7 U8
+1651284              1   ADP3338         SOT223          IC3
+1426253              8   Q_NMOS_GSD      SOT-23          Q2 Q3 Q4 Q5 Q6 Q7 Q8 Q9
+2447260              8   160             0603            R10 R11 R4 R5 R6 R7 R8 R9
+2447226              1   100k            0603            R3
+2515358              1   DS3231MZ        SOIC-8          IC2
+2627427              3   100n            0603            C4 C5 C6
+1568023              1   MICROUSB        MICROUSB_MOLEX_47589-0001 J1
+2447272              2   1k              0603            R1 R2
+SC12389              1   TEPT4400        LED_D3.0mm      Q1
+2320811              1   4u7             0603            C3
+1759102              1   10n             0603            C1
+1759399              3   1u              0603            C2 C7 C8
+2056829              2   SET,INC         SKHHLSA010      SW1 SW2
+3029839              1   CR1220/1225     KEYSTONE500     BT1
+
