@@ -1,0 +1,33 @@
+name: smalltime
+lsefreq: 0
+hsefreq: 0
+voltage: 3.3
+mcutype: STM32F030x6
+default: input, pushpull, startlow, floating, highspeed
+pins:
+    DIG1:        pa15, output
+    DIG2:        pa0,  output
+    DIG3:        pf1,  output
+    DIG4:        pf0,  output
+    DIG5:        pa5,  output
+    DIG6:        pa10, output
+    DIG7:        pa2,  output
+    DIG8:        pa1,  output
+
+    SEG_A:       pb3,  output
+    SEG_B:       pa12, output
+    SEG_C:       pb0,  output
+    SEG_D:       pa7,  output
+    SEG_E:       pa6,  output
+    SEG_F:       pb4,  output
+    SEG_G:       pb5,  output
+    SEG_DP:      pb1,  output
+
+    LIGHT_EN:    pa3, output
+    LIGHT_SENSE: pa4, analog
+
+    I2C_SCL:     pb6, af1, opendrain
+    I2C_SDA:     pb7, af1, opendrain
+
+    SW_INC:      pa8, input, pullup
+    SW_SET:      pa9, input, pullup
