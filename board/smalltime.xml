@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <export version="D">
   <design>
-    <source>C:\Users\dave2\home\git\smalltime\board\smalltime.sch</source>
-    <date>02/08/2017 22:56:34</date>
-    <tool>Eeschema (2017-07-16 revision e797af331)-makepkg</tool>
+    <source>/auto/homes/dwt27/git/smalltime/board/smalltime.sch</source>
+    <date>Fri 04 Aug 2017 17:40:58 BST</date>
+    <tool>Eeschema no-vcs-found-40f60c9~58~ubuntu16.04.1</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
         <title/>
@@ -20,11 +20,11 @@
   </design>
   <components>
     <comp ref="IC1">
-      <value>STM32F030K6T6</value>
+      <value>STM32F051K6T7</value>
       <footprint>agg:LQFP-32</footprint>
-      <datasheet>http://www.st.com/web/en/resource/technical/document/datasheet/DM00088500.pdf</datasheet>
+      <datasheet>http://www.farnell.com/datasheets/2307889.pdf</datasheet>
       <fields>
-        <field name="Farnell">2432085</field>
+        <field name="Farnell">2432090</field>
       </fields>
       <libsource lib="stm32f0xxkxtx" part="STM32F0xxKxTx"/>
       <sheetpath names="/" tstamps="/"/>
@@ -762,38 +762,38 @@
     </libpart>
   </libparts>
   <libraries>
+    <library logical="stm32f0xxkxtx">
+      <uri>/auto/homes/dwt27/git/smalltime/board/agg-kicad/lib/ic/microcontroller/stm32f0xxkxtx.lib</uri>
+    </library>
     <library logical="swd_tc">
-      <uri>C:\Users\dave2\home\git\smalltime\board\agg-kicad\lib\connector\swd_tc.lib</uri>
+      <uri>/auto/homes/dwt27/git/smalltime/board/agg-kicad/lib/connector/swd_tc.lib</uri>
     </library>
     <library logical="device">
-      <uri>C:\Program Files\KiCad\share\kicad\library\device.lib</uri>
-    </library>
-    <library logical="stm32f0xxkxtx">
-      <uri>C:\Users\dave2\home\git\smalltime\board\agg-kicad\lib\ic\microcontroller\stm32f0xxkxtx.lib</uri>
+      <uri>/usr/share/kicad/library/device.lib</uri>
     </library>
     <library logical="swd">
-      <uri>C:\Users\dave2\home\git\smalltime\board\agg-kicad\lib\connector\swd.lib</uri>
+      <uri>/auto/homes/dwt27/git/smalltime/board/agg-kicad/lib/connector/swd.lib</uri>
     </library>
     <library logical="microusb">
-      <uri>C:\Users\dave2\home\git\smalltime\board\agg-kicad\lib\connector\microusb.lib</uri>
-    </library>
-    <library logical="adp3338">
-      <uri>C:\Users\dave2\home\git\smalltime\board\agg-kicad\lib\ic\power\adp3338.lib</uri>
-    </library>
-    <library logical="ls0803gwk">
-      <uri>C:\Users\dave2\home\git\smalltime\board\parts\ls0803gwk.lib</uri>
-    </library>
-    <library logical="part">
-      <uri>C:\Users\dave2\home\git\smalltime\board\agg-kicad\lib\misc\part.lib</uri>
-    </library>
-    <library logical="switch">
-      <uri>C:\Users\dave2\home\git\smalltime\board\agg-kicad\lib\ui\switch.lib</uri>
+      <uri>/auto/homes/dwt27/git/smalltime/board/agg-kicad/lib/connector/microusb.lib</uri>
     </library>
     <library logical="ds3231mz">
-      <uri>C:\Users\dave2\home\git\smalltime\board\agg-kicad\lib\ic\clock\ds3231mz.lib</uri>
+      <uri>/auto/homes/dwt27/git/smalltime/board/agg-kicad/lib/ic/clock/ds3231mz.lib</uri>
+    </library>
+    <library logical="part">
+      <uri>/auto/homes/dwt27/git/smalltime/board/agg-kicad/lib/misc/part.lib</uri>
     </library>
     <library logical="tept">
-      <uri>C:\Users\dave2\home\git\smalltime\board\parts\tept.lib</uri>
+      <uri>/auto/homes/dwt27/git/smalltime/board/parts/tept.lib</uri>
+    </library>
+    <library logical="switch">
+      <uri>/auto/homes/dwt27/git/smalltime/board/agg-kicad/lib/ui/switch.lib</uri>
+    </library>
+    <library logical="ls0803gwk">
+      <uri>/auto/homes/dwt27/git/smalltime/board/parts/ls0803gwk.lib</uri>
+    </library>
+    <library logical="adp3338">
+      <uri>/auto/homes/dwt27/git/smalltime/board/agg-kicad/lib/ic/power/adp3338.lib</uri>
     </library>
   </libraries>
   <nets>

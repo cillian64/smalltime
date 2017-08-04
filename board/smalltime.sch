@@ -34,7 +34,6 @@ LIBS:swd
 LIBS:microusb
 LIBS:ds3231mz
 LIBS:mcp1700
-LIBS:si5515cdc
 LIBS:pfet
 LIBS:tept
 LIBS:part
@@ -61,10 +60,10 @@ L STM32F0xxKxTx IC1
 U 1 1 596FD91E
 P 2500 3250
 F 0 "IC1" H 2200 4350 50  0000 L CNN
-F 1 "STM32F030K6T6" H 2200 2150 50  0000 L CNN
+F 1 "STM32F051K6T7" H 2200 2150 50  0000 L CNN
 F 2 "agg:LQFP-32" H 2200 2050 50  0001 L CNN
-F 3 "http://www.st.com/web/en/resource/technical/document/datasheet/DM00088500.pdf" H 2200 1950 50  0001 L CNN
-F 4 "2432085" H 2200 1850 50  0001 L CNN "Farnell"
+F 3 "http://www.farnell.com/datasheets/2307889.pdf" H 2200 1950 50  0001 L CNN
+F 4 "2432090" H 2200 1850 50  0001 L CNN "Farnell"
 	1    2500 3250
 	1    0    0    -1  
 $EndComp

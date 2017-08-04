@@ -2,7 +2,7 @@ name: smalltime
 lsefreq: 0
 hsefreq: 0
 voltage: 3.3
-mcutype: STM32F030x6
+mcutype: STM32F051x8
 default: input, pushpull, startlow, floating, highspeed
 pins:
     DIG1:        pa15, output

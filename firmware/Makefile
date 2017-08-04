@@ -103,7 +103,7 @@ include $(CHIBIOS)/os/common/ports/ARMCMx/compilers/GCC/mk/port_v6m.mk
 include $(CHIBIOS)/test/rt/test.mk
 
 # Define linker script file here
-LDSCRIPT= $(CHIBIOS)/os/common/startup/ARMCMx/compilers/GCC/ld/STM32F030x6.ld
+LDSCRIPT= STM32F051x6.ld
 
 # C sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.

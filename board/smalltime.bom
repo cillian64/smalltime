@@ -2,7 +2,7 @@ Bill Of Materials
 =================
 
 Source file: smalltime.xml
-Date: 2017-08-02T22:56:40.273033
+Date: 2017-08-04T17:40:58.451223
 
 Parts Missing Footprints
 ------------------------
@@ -42,7 +42,8 @@ FTSH-105-01-F-D-K,1,1x P1 FTSH-105-01-F-D-K
   Farnell
   ~~~~~~~
 4199091,1,1x BATTERY None
-2432085,1,1x STM32F030K6T6 LQFP-32
+2432090,1,1x STM32F051K6T7 LQFP-32
+3029839,1,1x CR1220/1225 KEYSTONE500
 2627651,8,8x DIG8 DIG4 DIG5 DIG6 DIG7 DI
 1651284,1,1x ADP3338 SOT223
 1426253,8,8x Q_NMOS_GSD SOT-23
@@ -57,14 +58,14 @@ SC12389,1,1x TEPT4400 LED_D3.0mm
 1759102,1,1x 10n 0603
 1759399,3,3x 1u 0603
 2056829,2,2x SET INC SKHHLSA010
-3029839,1,1x CR1220/1225 KEYSTONE500
 
 
 Assembly BOM
 ------------
 FTSH-105-01-F-D-K    1   SWD             FTSH-105-01-F-D-K P1
 4199091              1   BATTERY         None            X1
-2432085              1   STM32F030K6T6   LQFP-32         IC1
+2432090              1   STM32F051K6T7   LQFP-32         IC1
+3029839              1   CR1220/1225     KEYSTONE500     BT1
 2627651              8   DIG8,DIG4,DIG5,DIG6,DIG7,DIG1,DIG2,DIG3 LS0803GWK       U1 U2 U3 U4 U5 U6 U7 U8
 1651284              1   ADP3338         SOT223          IC3
 1426253              8   Q_NMOS_GSD      SOT-23          Q2 Q3 Q4 Q5 Q6 Q7 Q8 Q9
@@ -79,5 +80,4 @@ SC12389              1   TEPT4400        LED_D3.0mm      Q1
 1759102              1   10n             0603            C1
 1759399              3   1u              0603            C2 C7 C8
 2056829              2   SET,INC         SKHHLSA010      SW1 SW2
-3029839              1   CR1220/1225     KEYSTONE500     BT1
 
