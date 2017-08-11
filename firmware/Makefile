@@ -115,6 +115,11 @@ CSRC = $(STARTUPSRC) \
        $(PLATFORMSRC) \
        $(BOARDSRC) \
        $(TESTSRC) \
+	   display.c \
+	   ds3231.c \
+	   input.c \
+	   leds.c \
+	   timekeeping.c \
        main.c
 
 
