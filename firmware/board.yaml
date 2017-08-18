@@ -31,3 +31,6 @@ pins:
 
     SW_INC:      pa8, input, pullup
     SW_SET:      pa9, input, pullup
+
+    SWDIO:       pa13, af0
+    SWCLK:       pa14, af0

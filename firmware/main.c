@@ -24,10 +24,12 @@ int main(void)
     halInit();
     chSysInit();
 
-    chThdCreateStatic(waDisplay, sizeof(waDisplay), NORMALPRIO, DisplayThread,
-                      NULL);
-    chThdCreateStatic(waTimekeeping, sizeof(waTimekeeping), NORMALPRIO,
-                      TimekeepingThread, NULL);
-    chThdCreateStatic(waInput, sizeof(waInput), NORMALPRIO, InputThread, NULL);
+//    chThdCreateStatic(waDisplay, sizeof(waDisplay), NORMALPRIO, DisplayThread,
+//                      NULL);
+//    chThdCreateStatic(waTimekeeping, sizeof(waTimekeeping), NORMALPRIO,
+//                      TimekeepingThread, NULL);
+//    chThdCreateStatic(waInput, sizeof(waInput), NORMALPRIO, InputThread, NULL);
+    while(true)
+        chThdSleepMilliseconds(1000);
     return 0;
 }
