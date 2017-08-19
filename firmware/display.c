@@ -19,53 +19,83 @@ THD_FUNCTION(DisplayThread, arg)
 
     while(true)
     {
-        displayDigit(displaydigits.ht, true,
-                displaydigits.digit_selector == 1);
-        palSetLine(LINE_DIG8);
-        chThdSleepMicroseconds(digdelay);
-        palClearLine(LINE_DIG8);
+        if(displaydigits.digit_selector < 9)
+        {
+            displayDigit(displaydigits.ht, true,
+                    displaydigits.digit_selector == 1);
+            palSetLine(LINE_DIG8);
+            chThdSleepMicroseconds(digdelay);
+            palClearLine(LINE_DIG8);
 
-        displayDigit(displaydigits.hu, true,
-                displaydigits.digit_selector == 2);
-        palSetLine(LINE_DIG7);
-        chThdSleepMicroseconds(digdelay);
-        palClearLine(LINE_DIG7);
+            displayDigit(displaydigits.hu, true,
+                    displaydigits.digit_selector == 2);
+            palSetLine(LINE_DIG7);
+            chThdSleepMicroseconds(digdelay);
+            palClearLine(LINE_DIG7);
 
-        displayDigit(displaydigits.mt, true,
-                displaydigits.digit_selector == 3);
-        palSetLine(LINE_DIG6);
-        chThdSleepMicroseconds(digdelay);
-        palClearLine(LINE_DIG6);
+            displayDigit(displaydigits.mt, true,
+                    displaydigits.digit_selector == 3);
+            palSetLine(LINE_DIG6);
+            chThdSleepMicroseconds(digdelay);
+            palClearLine(LINE_DIG6);
 
-        displayDigit(displaydigits.mu, true,
-                displaydigits.digit_selector == 4);
-        palSetLine(LINE_DIG5);
-        chThdSleepMicroseconds(digdelay);
-        palClearLine(LINE_DIG5);
+            displayDigit(displaydigits.mu, true,
+                    displaydigits.digit_selector == 4);
+            palSetLine(LINE_DIG5);
+            chThdSleepMicroseconds(digdelay);
+            palClearLine(LINE_DIG5);
 
-        displayDigit(displaydigits.Dt, false,
-                displaydigits.digit_selector == 5);
-        palSetLine(LINE_DIG4);
-        chThdSleepMicroseconds(digdelay);
-        palClearLine(LINE_DIG4);
+            displayDigit(displaydigits.Dt, false,
+                    displaydigits.digit_selector == 5);
+            palSetLine(LINE_DIG4);
+            chThdSleepMicroseconds(digdelay);
+            palClearLine(LINE_DIG4);
 
-        displayDigit(displaydigits.Du, false,
-                displaydigits.digit_selector == 6);
-        palSetLine(LINE_DIG3);
-        chThdSleepMicroseconds(digdelay);
-        palClearLine(LINE_DIG3);
+            displayDigit(displaydigits.Du, false,
+                    displaydigits.digit_selector == 6);
+            palSetLine(LINE_DIG3);
+            chThdSleepMicroseconds(digdelay);
+            palClearLine(LINE_DIG3);
 
-        displayDigit(displaydigits.Mt, false,
-                displaydigits.digit_selector == 7);
-        palSetLine(LINE_DIG2);
-        chThdSleepMicroseconds(digdelay);
-        palClearLine(LINE_DIG2);
+            displayDigit(displaydigits.Mt, false,
+                    displaydigits.digit_selector == 7);
+            palSetLine(LINE_DIG2);
+            chThdSleepMicroseconds(digdelay);
+            palClearLine(LINE_DIG2);
 
-        displayDigit(displaydigits.Mu, false,
-                displaydigits.digit_selector == 8);
-        palSetLine(LINE_DIG1);
-        chThdSleepMicroseconds(digdelay);
-        palClearLine(LINE_DIG1);
+            displayDigit(displaydigits.Mu, false,
+                    displaydigits.digit_selector == 8);
+            palSetLine(LINE_DIG1);
+            chThdSleepMicroseconds(digdelay);
+            palClearLine(LINE_DIG1);
+        }
+        else // display.digit_selector >= 9:
+        {
+            displayDigit(2, false, false);
+            palSetLine(LINE_DIG4);
+            chThdSleepMicroseconds(digdelay);
+            palClearLine(LINE_DIG4);
+
+            displayDigit(0, false, false);
+            palSetLine(LINE_DIG3);
+            chThdSleepMicroseconds(digdelay);
+            palClearLine(LINE_DIG3);
+
+            displayDigit(displaydigits.Yt, false,
+                    displaydigits.digit_selector == 9);
+            palSetLine(LINE_DIG2);
+            chThdSleepMicroseconds(digdelay);
+            palClearLine(LINE_DIG2);
+
+            displayDigit(displaydigits.Yu, false,
+                    displaydigits.digit_selector == 10);
+            palSetLine(LINE_DIG1);
+            chThdSleepMicroseconds(digdelay);
+            palClearLine(LINE_DIG1);
+
+            // So year display has same brightness:
+            chThdSleepMicroseconds(4*digdelay);
+        }
     }
 }
 

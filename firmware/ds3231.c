@@ -89,7 +89,6 @@ void ds3231_get(void)
                             TIME_INFINITE);
     ds3231_time.Mt = (rx_buf >> 4) & 0b00000001;
     ds3231_time.Mu = rx_buf & 0b00001111;
-    ds3231_time.Yh = (rx_buf >> 7) & 0b00000001;
 
     // Years
     tx_buf = 0x06;
@@ -135,8 +134,7 @@ void ds3231_set(void)
 
     // Months
     tx_buf[0] = 0x05;
-    tx_buf[1] = (ds3231_time.Yh << 7) | (ds3231_time.Mt << 4) |
-                ds3231_time.Mu;
+    tx_buf[1] = (ds3231_time.Mt << 4) | ds3231_time.Mu;
     i2cMasterTransmitTimeout(&I2CD1, ds3231_address, tx_buf, 2, NULL, 0,
                              TIME_INFINITE);
 

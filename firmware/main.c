@@ -36,7 +36,7 @@ int main(void)
             while(!palReadLine(LINE_SW_SET))
                 chThdSleepMilliseconds(100);
             displaydigits.digit_selector =
-                (displaydigits.digit_selector + 1) % 9;
+                (displaydigits.digit_selector + 1) % 11;
         }
 
         if(!palReadLine(LINE_SW_INC))
@@ -74,6 +74,12 @@ int main(void)
                 case 8:
                     ds3231_time.Mu = (ds3231_time.Mu + 1) % 10;
                     break;
+                case 9:
+                    ds3231_time.Yt = (ds3231_time.Yt + 1) % 10;
+                    break;
+                case 10:
+                    ds3231_time.Yu = (ds3231_time.Yu + 1) % 10;
+                    break;
             }
             ds3231_set();
         }
@@ -85,6 +91,8 @@ int main(void)
         displaydigits.Mu = ds3231_time.Mu;
         displaydigits.Dt = ds3231_time.Dt;
         displaydigits.Du = ds3231_time.Du;
+        displaydigits.Yt = ds3231_time.Yt;
+        displaydigits.Yu = ds3231_time.Yu;
         chThdSleepMilliseconds(100);
     }
 }
