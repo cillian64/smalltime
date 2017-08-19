@@ -71,6 +71,22 @@ THD_FUNCTION(DisplayThread, arg)
         }
         else // display.digit_selector >= 9:
         {
+            // We skip two digits in this mode.  This delay means the
+            // remaining digits don't appear brighter.
+            chThdSleepMicroseconds(2 * digdelay);
+
+            displayDigit(displaydigits.st, true,
+                    displaydigits.digit_selector == 9);
+            palSetLine(LINE_DIG6);
+            chThdSleepMicroseconds(digdelay);
+            palClearLine(LINE_DIG6);
+
+            displayDigit(displaydigits.su, true,
+                    displaydigits.digit_selector == 9);
+            palSetLine(LINE_DIG5);
+            chThdSleepMicroseconds(digdelay);
+            palClearLine(LINE_DIG5);
+
             displayDigit(2, false, false);
             palSetLine(LINE_DIG4);
             chThdSleepMicroseconds(digdelay);
@@ -82,13 +98,13 @@ THD_FUNCTION(DisplayThread, arg)
             palClearLine(LINE_DIG3);
 
             displayDigit(displaydigits.Yt, false,
-                    displaydigits.digit_selector == 9);
+                    displaydigits.digit_selector == 10);
             palSetLine(LINE_DIG2);
             chThdSleepMicroseconds(digdelay);
             palClearLine(LINE_DIG2);
 
             displayDigit(displaydigits.Yu, false,
-                    displaydigits.digit_selector == 10);
+                    displaydigits.digit_selector == 11);
             palSetLine(LINE_DIG1);
             chThdSleepMicroseconds(digdelay);
             palClearLine(LINE_DIG1);

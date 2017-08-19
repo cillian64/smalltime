@@ -36,7 +36,7 @@ int main(void)
             while(!palReadLine(LINE_SW_SET))
                 chThdSleepMilliseconds(100);
             displaydigits.digit_selector =
-                (displaydigits.digit_selector + 1) % 11;
+                (displaydigits.digit_selector + 1) % 12;
         }
 
         if(!palReadLine(LINE_SW_INC))
@@ -46,9 +46,7 @@ int main(void)
             switch(displaydigits.digit_selector)
             {
                 case 0:
-                    // No digit selected: zero the second counter
-                    ds3231_time.st = 0;
-                    ds3231_time.su = 0;
+                    // No digit selected: Do nothing
                     break;
                 case 1:
                     ds3231_time.ht = (ds3231_time.ht + 1) % 3;
@@ -75,9 +73,13 @@ int main(void)
                     ds3231_time.Mu = (ds3231_time.Mu + 1) % 10;
                     break;
                 case 9:
-                    ds3231_time.Yt = (ds3231_time.Yt + 1) % 10;
+                    ds3231_time.st = 0;
+                    ds3231_time.su = 0;
                     break;
                 case 10:
+                    ds3231_time.Yt = (ds3231_time.Yt + 1) % 10;
+                    break;
+                case 11:
                     ds3231_time.Yu = (ds3231_time.Yu + 1) % 10;
                     break;
             }
@@ -93,6 +95,8 @@ int main(void)
         displaydigits.Du = ds3231_time.Du;
         displaydigits.Yt = ds3231_time.Yt;
         displaydigits.Yu = ds3231_time.Yu;
+        displaydigits.st = ds3231_time.st;
+        displaydigits.su = ds3231_time.su;
         chThdSleepMilliseconds(100);
     }
 }
