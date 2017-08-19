@@ -5,10 +5,11 @@
 #include "hal.h"
 
 #include "display.h"
+#include "ds3231.h"
 
 void displayDigit(uint8_t digit, bool flip, bool dp);
 
-DisplayDigits displaydigits;
+uint8_t digit_selector;
 
 THD_FUNCTION(DisplayThread, arg)
 {
@@ -19,70 +20,60 @@ THD_FUNCTION(DisplayThread, arg)
 
     while(true)
     {
-        if(displaydigits.digit_selector < 9)
+        if(digit_selector < 9)
         {
-            displayDigit(displaydigits.ht, true,
-                    displaydigits.digit_selector == 1);
+            displayDigit(ds3231_time.ht, true, digit_selector == 1);
             palSetLine(LINE_DIG8);
             chThdSleepMicroseconds(digdelay);
             palClearLine(LINE_DIG8);
 
-            displayDigit(displaydigits.hu, true,
-                    displaydigits.digit_selector == 2);
+            displayDigit(ds3231_time.hu, true, digit_selector == 2);
             palSetLine(LINE_DIG7);
             chThdSleepMicroseconds(digdelay);
             palClearLine(LINE_DIG7);
 
-            displayDigit(displaydigits.mt, true,
-                    displaydigits.digit_selector == 3);
+            displayDigit(ds3231_time.mt, true, digit_selector == 3);
             palSetLine(LINE_DIG6);
             chThdSleepMicroseconds(digdelay);
             palClearLine(LINE_DIG6);
 
-            displayDigit(displaydigits.mu, true,
-                    displaydigits.digit_selector == 4);
+            displayDigit(ds3231_time.mu, true, digit_selector == 4);
             palSetLine(LINE_DIG5);
             chThdSleepMicroseconds(digdelay);
             palClearLine(LINE_DIG5);
 
-            displayDigit(displaydigits.Dt, false,
-                    displaydigits.digit_selector == 5);
+            displayDigit(ds3231_time.Dt, false, digit_selector == 5);
             palSetLine(LINE_DIG4);
             chThdSleepMicroseconds(digdelay);
             palClearLine(LINE_DIG4);
 
-            displayDigit(displaydigits.Du, false,
-                    displaydigits.digit_selector == 6);
+            displayDigit(ds3231_time.Du, false, digit_selector == 6);
             palSetLine(LINE_DIG3);
             chThdSleepMicroseconds(digdelay);
             palClearLine(LINE_DIG3);
 
-            displayDigit(displaydigits.Mt, false,
-                    displaydigits.digit_selector == 7);
+            displayDigit(ds3231_time.Mt, false, digit_selector == 7);
             palSetLine(LINE_DIG2);
             chThdSleepMicroseconds(digdelay);
             palClearLine(LINE_DIG2);
 
-            displayDigit(displaydigits.Mu, false,
-                    displaydigits.digit_selector == 8);
+            displayDigit(ds3231_time.Mu, false, digit_selector == 8);
             palSetLine(LINE_DIG1);
             chThdSleepMicroseconds(digdelay);
             palClearLine(LINE_DIG1);
         }
-        else // display.digit_selector >= 9:
+        else // digit_selector >= 9:
         {
             // We skip two digits in this mode.  This delay means the
             // remaining digits don't appear brighter.
             chThdSleepMicroseconds(2 * digdelay);
 
-            displayDigit(displaydigits.st, true,
-                    displaydigits.digit_selector == 9);
+            displayDigit(ds3231_time.st, true, digit_selector == 9);
             palSetLine(LINE_DIG6);
             chThdSleepMicroseconds(digdelay);
             palClearLine(LINE_DIG6);
 
-            displayDigit(displaydigits.su, true,
-                    displaydigits.digit_selector == 9);
+            displayDigit(ds3231_time.su, true, digit_selector == 9);
             palSetLine(LINE_DIG5);
             chThdSleepMicroseconds(digdelay);
             palClearLine(LINE_DIG5);
@@ -97,14 +88,12 @@ THD_FUNCTION(DisplayThread, arg)
             chThdSleepMicroseconds(digdelay);
             palClearLine(LINE_DIG3);
 
-            displayDigit(displaydigits.Yt, false,
-                    displaydigits.digit_selector == 10);
+            displayDigit(ds3231_time.Yt, false, digit_selector == 10);
             palSetLine(LINE_DIG2);
             chThdSleepMicroseconds(digdelay);
             palClearLine(LINE_DIG2);
 
-            displayDigit(displaydigits.Yu, false,
-                    displaydigits.digit_selector == 11);
+            displayDigit(ds3231_time.Yu, false, digit_selector == 11);
             palSetLine(LINE_DIG1);
             chThdSleepMicroseconds(digdelay);
             palClearLine(LINE_DIG1);

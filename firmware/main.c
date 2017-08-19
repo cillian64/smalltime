@@ -26,7 +26,7 @@ int main(void)
     chThdCreateStatic(waDisplay, sizeof(waDisplay), NORMALPRIO, DisplayThread,
                       NULL);
 
-    displaydigits.digit_selector = 0;
+    digit_selector = 0;
 
     while(true)
     {
@@ -35,15 +35,14 @@ int main(void)
         {
             while(!palReadLine(LINE_SW_SET))
                 chThdSleepMilliseconds(100);
-            displaydigits.digit_selector =
-                (displaydigits.digit_selector + 1) % 12;
+            digit_selector =(digit_selector + 1) % 12;
         }
 
         if(!palReadLine(LINE_SW_INC))
         {
             while(!palReadLine(LINE_SW_INC))
                 chThdSleepMilliseconds(100);
-            switch(displaydigits.digit_selector)
+            switch(digit_selector)
             {
                 case 0:
                     // No digit selected: Do nothing
@@ -85,18 +84,6 @@ int main(void)
             }
             ds3231_set();
         }
-        displaydigits.ht = ds3231_time.ht;
-        displaydigits.hu = ds3231_time.hu;
-        displaydigits.mt = ds3231_time.mt;
-        displaydigits.mu = ds3231_time.mu;
-        displaydigits.Mt = ds3231_time.Mt;
-        displaydigits.Mu = ds3231_time.Mu;
-        displaydigits.Dt = ds3231_time.Dt;
-        displaydigits.Du = ds3231_time.Du;
-        displaydigits.Yt = ds3231_time.Yt;
-        displaydigits.Yu = ds3231_time.Yu;
-        displaydigits.st = ds3231_time.st;
-        displaydigits.su = ds3231_time.su;
         chThdSleepMilliseconds(100);
     }
 }
