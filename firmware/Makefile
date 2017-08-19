@@ -117,7 +117,6 @@ CSRC = $(STARTUPSRC) \
        $(TESTSRC) \
 	   display.c \
 	   ds3231.c \
-	   input.c \
 	   leds.c \
        main.c
 

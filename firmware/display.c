@@ -6,7 +6,7 @@
 
 #include "display.h"
 
-void displayDigit(uint8_t digit, bool flip);
+void displayDigit(uint8_t digit, bool flip, bool dp);
 
 DisplayDigits displaydigits;
 
@@ -19,52 +19,60 @@ THD_FUNCTION(DisplayThread, arg)
 
     while(true)
     {
-        displayDigit(displaydigits.ht, true);
+        displayDigit(displaydigits.ht, true,
+                displaydigits.digit_selector == 1);
         palSetLine(LINE_DIG8);
         chThdSleepMicroseconds(digdelay);
         palClearLine(LINE_DIG8);
 
-        displayDigit(displaydigits.hu, true);
+        displayDigit(displaydigits.hu, true,
+                displaydigits.digit_selector == 2);
         palSetLine(LINE_DIG7);
         chThdSleepMicroseconds(digdelay);
         palClearLine(LINE_DIG7);
 
-        displayDigit(displaydigits.mt, true);
+        displayDigit(displaydigits.mt, true,
+                displaydigits.digit_selector == 3);
         palSetLine(LINE_DIG6);
         chThdSleepMicroseconds(digdelay);
         palClearLine(LINE_DIG6);
 
-        displayDigit(displaydigits.mu, true);
+        displayDigit(displaydigits.mu, true,
+                displaydigits.digit_selector == 4);
         palSetLine(LINE_DIG5);
         chThdSleepMicroseconds(digdelay);
         palClearLine(LINE_DIG5);
 
-        displayDigit(displaydigits.Dt, false);
+        displayDigit(displaydigits.Dt, false,
+                displaydigits.digit_selector == 5);
         palSetLine(LINE_DIG4);
         chThdSleepMicroseconds(digdelay);
         palClearLine(LINE_DIG4);
 
-        displayDigit(displaydigits.Du, false);
+        displayDigit(displaydigits.Du, false,
+                displaydigits.digit_selector == 6);
         palSetLine(LINE_DIG3);
         chThdSleepMicroseconds(digdelay);
         palClearLine(LINE_DIG3);
 
-        displayDigit(displaydigits.Mt, false);
+        displayDigit(displaydigits.Mt, false,
+                displaydigits.digit_selector == 7);
         palSetLine(LINE_DIG2);
         chThdSleepMicroseconds(digdelay);
         palClearLine(LINE_DIG2);
 
-        displayDigit(displaydigits.Mu, false);
+        displayDigit(displaydigits.Mu, false,
+                displaydigits.digit_selector == 8);
         palSetLine(LINE_DIG1);
         chThdSleepMicroseconds(digdelay);
         palClearLine(LINE_DIG1);
     }
 }
 
-void displayDigit(uint8_t digit, bool flip)
+void displayDigit(uint8_t digit, bool flip, bool dp)
 {
-    // Each byte in the font corresponds to the 8 segments in order
-    // MSB: DP G F E D C B A (LSB)
+    // Each byte in the font corresponds to the 7 segments in order
+    // MSB: X G F E D C B A (LSB)
     // 0b00000001 is seg B
     // 0b00000010 is DP
     // 0b00000100 is F
@@ -89,6 +97,8 @@ void displayDigit(uint8_t digit, bool flip)
     if(digit > 9)
         chSysHalt("Invalid digit");
 
+    // For some reason these segments are all in the wrong order
+    // Probably because the 7seg had such a useless datasheet.
     if(!flip)
     {
         palWriteLine(LINE_SEG_DP, (font[digit] >> 0) & 0x01);
@@ -97,7 +107,6 @@ void displayDigit(uint8_t digit, bool flip)
         palWriteLine(LINE_SEG_E,  (font[digit] >> 6) & 0x01);
         palWriteLine(LINE_SEG_D,  (font[digit] >> 4) & 0x01);
         palWriteLine(LINE_SEG_C,  (font[digit] >> 5) & 0x01);
-        palWriteLine(LINE_SEG_B,  (font[digit] >> 7) & 0x01);
         palWriteLine(LINE_SEG_A,  (font[digit] >> 1) & 0x01);
     }
     else
@@ -108,7 +117,7 @@ void displayDigit(uint8_t digit, bool flip)
         palWriteLine(LINE_SEG_E,  (font[digit] >> 6) & 0x01);
         palWriteLine(LINE_SEG_D,  (font[digit] >> 1) & 0x01);
         palWriteLine(LINE_SEG_C,  (font[digit] >> 2) & 0x01);
-        palWriteLine(LINE_SEG_B,  (font[digit] >> 7) & 0x01);
         palWriteLine(LINE_SEG_A,  (font[digit] >> 4) & 0x01);
     }
+    palWriteLine(LINE_SEG_B, dp);  // Yes this is definitely the DP.
 }
