@@ -34,6 +34,7 @@ LIBS:swd
 LIBS:microusb
 LIBS:ds3231mz
 LIBS:mcp1700
+LIBS:si5515cdc
 LIBS:pfet
 LIBS:tept
 LIBS:part
@@ -1178,7 +1179,7 @@ F 0 "IC3" H 5500 6950 50  0000 L CNN
 F 1 "ADP3338" H 5500 6650 50  0000 L CNN
 F 2 "agg-unchecked:SOT223" H 5500 6550 50  0001 L CNN
 F 3 "http://www.farnell.com/datasheets/2254554.pdf" H 5700 6850 50  0001 C CNN
-F 4 "1651284" H 5500 6450 50  0001 L CNN "Farnell"
+F 4 "1651283" H 5500 6450 50  0001 L CNN "Farnell"
 	1    5700 6850
 	1    0    0    -1  
 $EndComp
