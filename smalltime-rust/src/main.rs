@@ -14,12 +14,12 @@ use crate::hal::{prelude::*};
 
 #[entry]
 fn main() -> ! {
-  let (mut display_pins, mut delay) = board::board_setup();
+    let (display_pins, mut delay) = board::board_setup();
 
-  display_pins.dig1.set_high();
+    let mut my_display = display::Display::new(display_pins);
 
-  loop {
-    display_pins.seg_d.toggle();
-    delay.delay_ms(1_000_u32);
-  }
+    loop {
+        my_display.display_num(42, 0);
+        delay.delay_ms(1_000_u32);
+    }
 }
