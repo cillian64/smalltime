@@ -1,10 +1,10 @@
+use crate::hal::gpio::{Output, Pin, PushPull};
 #[allow(unused)]
 use crate::hal::{prelude::*, stm32};
-use crate::hal::gpio::{Pin, Output, PushPull};
 
 pub struct DisplayPins {
-    pub digits:   [Pin<Output<PushPull>>; 8],
-    pub segments:  [Pin<Output<PushPull>>; 8],
+    pub digits: [Pin<Output<PushPull>>; 8],
+    pub segments: [Pin<Output<PushPull>>; 8],
 }
 
 pub struct Display {
@@ -55,4 +55,3 @@ impl Display {
         }
     }
 }
-
