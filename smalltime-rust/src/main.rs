@@ -5,12 +5,13 @@ extern crate panic_halt; // break on `rust_begin_unwind` to catch panics
 
 use cortex_m_rt::entry;
 
-mod display;
 mod board;
+mod display;
+mod light;
 
 use stm32f0xx_hal as hal;
 
-use crate::hal::{prelude::*};
+use crate::hal::prelude::*;
 
 #[entry]
 fn main() -> ! {
