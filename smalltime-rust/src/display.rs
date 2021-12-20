@@ -38,9 +38,9 @@ impl Display {
     fn display_dig(&mut self, segments: &[u8; 8]) {
         for (i, seg) in segments.iter().enumerate() {
             if *seg > 0 {
-                self.display_pins.segments[i].set_high();
+                self.display_pins.segments[i].set_high().unwrap();
             } else {
-                self.display_pins.segments[i].set_low();
+                self.display_pins.segments[i].set_low().unwrap();
             }
         }
     }
@@ -48,9 +48,9 @@ impl Display {
     fn dig_select(&mut self, dig: u8) {
         for i in 0..8 {
             if i == dig {
-                self.display_pins.digits[i as usize].set_high();
+                self.display_pins.digits[i as usize].set_high().unwrap();
             } else {
-                self.display_pins.digits[i as usize].set_low();
+                self.display_pins.digits[i as usize].set_low().unwrap();
             }
         }
     }
