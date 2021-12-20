@@ -31,14 +31,14 @@ pub fn board_setup() -> (display::DisplayPins, hal::delay::Delay) {
                 gpioa.pa1.into_push_pull_output(cs).downgrade(),  // dig 8
             ],
             segments: [
-                gpiob.pb3.into_push_pull_output(cs).downgrade(), // seg a
-                gpioa.pa12.into_push_pull_output(cs).downgrade(), // seg b
-                gpiob.pb0.into_push_pull_output(cs).downgrade(), // seg c
-                gpioa.pa7.into_push_pull_output(cs).downgrade(), // seg d
-                gpioa.pa6.into_push_pull_output(cs).downgrade(), // seg e
-                gpiob.pb4.into_push_pull_output(cs).downgrade(), // seg f
-                gpiob.pb5.into_push_pull_output(cs).downgrade(), // seg g
-                gpiob.pb1.into_push_pull_output(cs).downgrade(), // seg dp
+                gpiob.pb0.into_push_pull_output(cs).downgrade(), // seg A
+                gpiob.pb1.into_push_pull_output(cs).downgrade(), // seg B
+                gpiob.pb3.into_push_pull_output(cs).downgrade(), // seg C
+                gpiob.pb4.into_push_pull_output(cs).downgrade(), // seg D
+                gpiob.pb5.into_push_pull_output(cs).downgrade(), // seg E
+                gpioa.pa7.into_push_pull_output(cs).downgrade(), // seg F
+                gpioa.pa6.into_push_pull_output(cs).downgrade(), // seg G
+                gpioa.pa12.into_push_pull_output(cs).downgrade(), // seg DP
             ],
         }
     });
