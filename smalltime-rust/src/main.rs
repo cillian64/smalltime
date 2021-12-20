@@ -20,7 +20,9 @@ fn main() -> ! {
     let mut my_display = display::Display::new(display_pins);
 
     loop {
-        my_display.display_num(42, 0);
+        my_display.display_num(0, 0);
+        delay.delay_ms(1_000_u32);
+        my_display.display_num(1, 0);
         delay.delay_ms(1_000_u32);
     }
 }
