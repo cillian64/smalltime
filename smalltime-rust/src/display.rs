@@ -42,6 +42,13 @@ impl Display {
     pub fn display_num(&mut self, num: u8, dig: u8) {
         assert!(num < 10);
         assert!(dig < 8);
+
+        // Clear activated segments before switching digit, in order to
+        // prevent ghosting.
+        for i in 0..8 {
+            self.display_pins.segments[i].set_low().unwrap();
+        }
+
         self.dig_select(dig);
 
         let mut segments = FONT[num as usize].clone();
@@ -53,6 +60,13 @@ impl Display {
         }
 
         self.display_dig(&segments);
+    }
+
+    /// Clear the display - turn all segments off
+    pub fn clear(&mut self) {
+        for i in 0..8 {
+            self.display_pins.segments[i].set_low().unwrap();
+        }
     }
 
     fn display_dig(&mut self, segments: &[PinState; 7]) {

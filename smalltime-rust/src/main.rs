@@ -51,5 +51,6 @@ fn main() -> ! {
             disp.display_num(seconds % 10, 7);
             delay.delay_ms(1u32);
         }
+        disp.clear();
     }
 }
