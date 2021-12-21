@@ -21,14 +21,14 @@ pub fn board_setup() -> (display::DisplayPins, hal::delay::Delay) {
     let display_pins = cortex_m::interrupt::free(|cs| {
         display::DisplayPins {
             digits: [
-                gpioa.pa15.into_push_pull_output(cs).downgrade(), // dig 1
-                gpioa.pa0.into_push_pull_output(cs).downgrade(),  // dig 2
-                gpiof.pf1.into_push_pull_output(cs).downgrade(),  // dig 3
+                gpioa.pa1.into_push_pull_output(cs).downgrade(),  // dig 0
+                gpioa.pa2.into_push_pull_output(cs).downgrade(),  // dig 1
+                gpioa.pa10.into_push_pull_output(cs).downgrade(), // dig 2
+                gpioa.pa5.into_push_pull_output(cs).downgrade(),  // dig 3
                 gpiof.pf0.into_push_pull_output(cs).downgrade(),  // dig 4
-                gpioa.pa5.into_push_pull_output(cs).downgrade(),  // dig 5
-                gpioa.pa10.into_push_pull_output(cs).downgrade(), // dig 6
-                gpioa.pa2.into_push_pull_output(cs).downgrade(),  // dig 7
-                gpioa.pa1.into_push_pull_output(cs).downgrade(),  // dig 8
+                gpiof.pf1.into_push_pull_output(cs).downgrade(),  // dig 5
+                gpioa.pa0.into_push_pull_output(cs).downgrade(),  // dig 6
+                gpioa.pa15.into_push_pull_output(cs).downgrade(), // dig 7
             ],
             segments: [
                 gpiob.pb0.into_push_pull_output(cs).downgrade(), // seg A

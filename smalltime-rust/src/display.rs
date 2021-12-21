@@ -35,12 +35,24 @@ impl Display {
         Display { display_pins }
     }
 
+    /// Display the number `num` on the display digit number `dig`.  Display
+    /// digits are layed out as follows:
+    /// 0 1 2 3
+    /// 4 5 6 7
     pub fn display_num(&mut self, num: u8, dig: u8) {
         assert!(num < 10);
         assert!(dig < 8);
         self.dig_select(dig);
 
-        self.display_dig(&FONT[num as usize]);
+        let mut segments = FONT[num as usize].clone();
+        // Digits 0-3 are mounted upside-down so the segments need rearranging.
+        if dig < 4 {
+            segments.swap(0, 3); // Swap segments A and D
+            segments.swap(1, 4); // Swap segments B and E
+            segments.swap(2, 5); // Swap segments C and F
+        }
+
+        self.display_dig(&segments);
     }
 
     fn display_dig(&mut self, segments: &[PinState; 7]) {
