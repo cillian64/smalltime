@@ -3,10 +3,12 @@ use crate::hal;
 use hal::{prelude::*, stm32, i2c::I2c};
 use embedded_hal::blocking::i2c;
 use stm32f0xx_hal::i2c::Error;
+use crate::non_blocking_delay::NonBlockingDelayFactory;
+use stm32f0xx_hal::{timers::*, time::KiloHertz};
 
 pub fn board_setup() ->
     (display::DisplayPins,
-     hal::delay::Delay,
+     NonBlockingDelayFactory,
      impl i2c::Write<Error = Error> + i2c::WriteRead<Error = Error>)
 {
     let mut p = stm32::Peripherals::take().unwrap();
@@ -18,12 +20,11 @@ pub fn board_setup() ->
         .sysclk(8.mhz()) // 8MHz straight from HSI
         .freeze(&mut p.FLASH);
 
-    let delay = hal::delay::Delay::new(cp.SYST, &rcc);
-
     let gpioa = p.GPIOA.split(&mut rcc);
     let gpiob = p.GPIOB.split(&mut rcc);
     let gpiof = p.GPIOF.split(&mut rcc);
 
+    // Setup GPIOs for display
     let display_pins = cortex_m::interrupt::free(|cs| {
         display::DisplayPins {
             digits: [
@@ -56,5 +57,9 @@ pub fn board_setup() ->
         I2c::i2c1(p.I2C1, (scl, sda), 100.khz(), &mut rcc)
     });
 
-    (display_pins, delay, i2c)
+    // Setup delay timer
+    let tim14 = Timer::tim14(p.TIM14, KiloHertz(1), &mut rcc);
+    let non_blocking_delay_factory = NonBlockingDelayFactory::new(tim14);
+
+    (display_pins, non_blocking_delay_factory, i2c)
 }

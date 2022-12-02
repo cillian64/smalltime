@@ -8,9 +8,9 @@ use cortex_m_rt::entry;
 mod board;
 mod display;
 mod light;
+mod non_blocking_delay;
 
 use stm32f0xx_hal as hal;
-use crate::hal::prelude::*;
 use ds323x::{Ds323x, Rtcc};
 
 // Take an Hours struct which may or may not be in 24-hour time and convert it
@@ -25,10 +25,9 @@ fn hours_to_24(hours: ds323x::Hours) -> u8 {
 
 #[entry]
 fn main() -> ! {
-    let (display_pins, mut delay, i2c) = board::board_setup();
+    let (display_pins, delay, i2c) = board::board_setup();
 
     let mut disp = display::Display::new(display_pins);
-
     let mut rtc = Ds323x::new_ds3231(i2c);
 
     loop { // Loop roughly every 1 second
@@ -38,18 +37,18 @@ fn main() -> ! {
 
         for _ in 0..166 {
             disp.display_num(hours_to_24(hours) / 10, 0);
-            delay.delay_ms(1u32);
+            delay.delay_ms(500).block();
             disp.display_num(hours_to_24(hours) % 10, 1);
-            delay.delay_ms(1u32);
+            delay.delay_ms(500).block();
             disp.display_num(minutes / 10, 2);
-            delay.delay_ms(1u32);
+            delay.delay_ms(500).block();
             disp.display_num(minutes % 10, 3);
-            delay.delay_ms(1u32);
+            delay.delay_ms(500).block();
 
             disp.display_num(seconds / 10, 6);
-            delay.delay_ms(1u32);
+            delay.delay_ms(500).block();
             disp.display_num(seconds % 10, 7);
-            delay.delay_ms(1u32);
+            delay.delay_ms(500).block();
         }
         disp.clear();
     }
